@@ -1,9 +1,11 @@
-public abstract class Strenght_fighters extends Unit {
+public abstract class StrenghtFighters extends Unit {
     private int strength;
+
+    public abstract void attack();
 
 
     public int getStrength() {
-        return strength; 
+        return strength;
     }
 
     public void setStrength(int strength) {

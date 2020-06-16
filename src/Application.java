@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * 1. Создать абстрактный класс Unit
  * a. Обладает состоянием (свойства\характеристики): Здоровье, Защита
@@ -35,16 +37,10 @@
 public class Application {
 
 
-
     public static void main(String[] args) {
 
-        Soldier soldier = new Soldier();
-        soldier.go();
-        soldier.attack();
-        soldier.stop();
-        soldier.setStrength(20);
-        System.out.println(soldier.getStrength());
+        Academy academy = new Academy();
+        academy.academyMain();
     }
-
 
 }
