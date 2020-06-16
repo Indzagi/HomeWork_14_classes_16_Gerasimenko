@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class ArmyCamp {
-    public Soldier[] soldiersBarack;
-    public Archer[] archersBarack;
-    public Wizard[] wizardsBarack;
-    public Cleric[] clericsBarack;
+    private Soldier[] soldiersBarack;
+    private Archer[] archersBarack;
+    private Wizard[] wizardsBarack;
+    private Cleric[] clericsBarack;
 
     public void armyCreation(Academy academy) {
 
