@@ -3,10 +3,7 @@ public class Archer extends StrenghtFighters {
 
 
     public Archer(String typeName, int health, int armor, int strength) {
-        this.setTypeName(typeName);
-        this.setHealth(health);
-        this.setArmor(armor);
-        this.setStrength(strength);
+        super(typeName, health, armor, strength);
     }
 
     @Override

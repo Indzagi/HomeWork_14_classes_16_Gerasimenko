@@ -1,184 +1,11 @@
 import java.util.Scanner;
 
 public class Academy {
-    private Soldier[] soldiersBarack;
-    private Archer[] archersBarack;
-    private Wizard[] wizardsBarack;
-    private Cleric[] clericsBarack;
     private Scanner scanner = new Scanner(System.in);
-    private String[] typeName = {"воин", "лучник", "маг", "клерик"};
-
-    public void academyMain() {
-
-        hello();
-
-        boolean tempBool = true;
-
-        while (tempBool) {
-
-            System.out.println("Барак с каким типом бойцев вы хотите создать?...");
-
-            Scanner scanner = new Scanner(System.in);
-            String typeNameToRequest = scanner.nextLine();
+    public String[] typeName = {"воин", "лучник", "маг", "клерик"};
 
 
-            for (int i = 0; i < typeName.length; i++) {
-
-                if (typeNameToRequest.equals(typeName[i])) {
-
-                    break;
-
-                } else if (i + 1 == typeName.length) {
-
-                    System.out.println("Вы ввели неправильные данные, повторите " +
-                            "ввод типа бойца или закончите запрос" +
-                            " на создание с помощью команды \"стоп\"...");
-                    tempBool = true;
-                }
-            }
-
-
-            if (typeNameToRequest.equals(typeName[0]) && soldiersBarack == null) {
-
-                soldiersBarack = createSoldier();
-                printCharactersOfSoldier();
-
-                tempBool = requestYesOrNo();
-
-            } else if (typeNameToRequest.equals(typeName[1]) && archersBarack == null) {
-
-                archersBarack = createArcher();
-                printCharactersOfArcher();
-
-                tempBool = requestYesOrNo();
-
-            } else if (typeNameToRequest.equals(typeName[2]) && wizardsBarack == null) {
-
-                wizardsBarack = createWizard();
-                printCharactersOfWizard();
-
-                tempBool = requestYesOrNo();
-
-            } else if (typeNameToRequest.equals(typeName[3]) && clericsBarack == null) {
-
-                clericsBarack = createCleric();
-                printCharactersOfCleric();
-
-                tempBool = requestYesOrNo();
-
-            } else if (typeNameToRequest.equals("стоп") || typeNameToRequest.equals("Стоп")) {
-
-                tempBool = false;
-
-            } else if (typeNameToRequest.equals(typeName[0]) &&
-                    soldiersBarack != null) {
-
-                System.out.println("Барак с воинами уже создан," +
-                        " смените тип запрашиваемого класса...");
-                tempBool = true;
-
-            } else if (typeNameToRequest.equals(typeName[1]) &&
-                    archersBarack != null) {
-
-                System.out.println("Барак с лучниками уже создан," +
-                        " смените тип запрашиваемого класса...");
-                tempBool = true;
-
-            } else if (typeNameToRequest.equals(typeName[2]) &&
-                    wizardsBarack != null) {
-
-                System.out.println("Барак с магами уже создан," +
-                        " смените тип запрашиваемого класса...");
-                tempBool = true;
-
-            } else if (typeNameToRequest.equals(typeName[3]) &&
-                    clericsBarack != null) {
-
-                System.out.println("Барак с клериками уже создан," +
-                        " смените тип запрашиваемого класса...");
-                tempBool = true;
-
-            }
-        }
-    }
-
-    private void hello() {
-        System.out.println("Добрый день, Вас преветствует Академия по созданию бойцов " +
-                "различных классов!");
-
-        System.out.println(String.format("%nПредлагается создать барак с бойцами определенного класса," +
-                " для создания %nбарака воинов - введите \"%s\" и кол-во " +
-                "бойцов, которое хотите создать,%nдля барака лучников - \"%s\"," +
-                " маги - \"%s\", клерики \"%s\",%nчтобы окончить подговоку бойцов," +
-                " напишите \"стоп\"%n", typeName[0], typeName[1], typeName[2], typeName[3]));
-    }
-
-    private boolean requestYesOrNo() {
-
-        Scanner scanner1 = new Scanner(System.in);
-        System.out.println("Хотите еще создать барак с бойцами другого типа?");
-        boolean tempBool2 = true;
-        boolean tempBool = true;
-
-        while (tempBool2) {
-
-            String requestYesOrNo = scanner1.nextLine();
-
-            if (requestYesOrNo.equals("Да") || requestYesOrNo.equals("да")) {
-
-                tempBool2 = false;
-
-                return true;
-
-            } else if (requestYesOrNo.equals("Нет") || requestYesOrNo.equals("нет")) {
-
-
-                tempBool2 = false;
-
-                return false;
-
-            } else {
-
-                System.out.println("вы ввели неправильное значение, повторите ввод");
-                tempBool2 = true;
-            }
-        }
-        return tempBool;
-    }
-
-    private void printCharactersOfSoldier() {
-        for (int i = 0; i < soldiersBarack.length; i++) {
-            System.out.println(String.format("создан %s №%d со здоровьем %d, защитой %d, силой %d",
-                    soldiersBarack[i].getTypeName(), i + 1, soldiersBarack[i].getHealth(),
-                    soldiersBarack[i].getArmor(), soldiersBarack[i].getStrength()));
-        }
-    }
-
-    private void printCharactersOfArcher() {
-        for (int i = 0; i < archersBarack.length; i++) {
-            System.out.println(String.format("создан %s №%d со здоровьем %d, защитой %d, силой %d",
-                    archersBarack[i].getTypeName(), i + 1, archersBarack[i].getHealth(),
-                    archersBarack[i].getArmor(), archersBarack[i].getStrength()));
-        }
-    }
-
-    private void printCharactersOfWizard() {
-        for (int i = 0; i < wizardsBarack.length; i++) {
-            System.out.println(String.format("создан %s №%d со здоровьем %d, защитой %d, силой магии %d",
-                    wizardsBarack[i].getTypeName(), i + 1, wizardsBarack[i].getHealth(),
-                    wizardsBarack[i].getArmor(), wizardsBarack[i].getMagicPower()));
-        }
-    }
-
-    private void printCharactersOfCleric() {
-        for (int i = 0; i < clericsBarack.length; i++) {
-            System.out.println(String.format("создан %s №%d со здоровьем %d, защитой %d, силой магии %d",
-                    clericsBarack[i].getTypeName(), i + 1, clericsBarack[i].getHealth(),
-                    clericsBarack[i].getArmor(), clericsBarack[i].getMagicPower()));
-        }
-    }
-
-    private Soldier createSoldier(String typeName) {
+    public Soldier createSoldier(String typeName) {
         int minHp = 70;
         int maxHp = 200;
         Soldier soldier = new Soldier(typeName, randomNumbers(minHp, maxHp),
@@ -202,10 +29,10 @@ public class Academy {
         return numberOfSoldiersInBarack;
     }
 
-    private Soldier[] createSoldier() {
+    public Soldier[] createSoldier() {
         System.out.println("Введите необходимое кол-во воинов в Академии");
 
-        soldiersBarack = new Soldier[requestNumberOfSoldier()];
+        Soldier[] soldiersBarack = new Soldier[requestNumberOfSoldier()];
 
         for (int i = 0; i < soldiersBarack.length; i++) {
             soldiersBarack[i] = createSoldier(typeName[0]);
@@ -213,7 +40,7 @@ public class Academy {
         return soldiersBarack;
     }
 
-    private Archer createArcher(String typeName) {
+    public Archer createArcher(String typeName) {
         int minHp = 50;
         int maxHp = 150;
         Archer archer = new Archer(typeName, randomNumbers(minHp, maxHp),
@@ -221,10 +48,10 @@ public class Academy {
         return archer;
     }
 
-    private Archer[] createArcher() {
+    public Archer[] createArcher() {
         System.out.println("Введите необходимое кол-во лучников в Академии");
 
-        archersBarack = new Archer[requestNumberOfSoldier()];
+        Archer[] archersBarack = new Archer[requestNumberOfSoldier()];
 
         for (int i = 0; i < archersBarack.length; i++) {
             archersBarack[i] = createArcher(typeName[1]);
@@ -232,7 +59,7 @@ public class Academy {
         return archersBarack;
     }
 
-    private Wizard createWizard(String typeName) {
+    public Wizard createWizard(String typeName) {
         int minHp = 40;
         int maxHp = 120;
         Wizard wizard = new Wizard(typeName, randomNumbers(minHp, maxHp),
@@ -240,10 +67,10 @@ public class Academy {
         return wizard;
     }
 
-    private Wizard[] createWizard() {
+    public Wizard[] createWizard() {
         System.out.println("Введите необходимое кол-во магов в Академии");
 
-        wizardsBarack = new Wizard[requestNumberOfSoldier()];
+        Wizard[] wizardsBarack = new Wizard[requestNumberOfSoldier()];
 
         for (int i = 0; i < wizardsBarack.length; i++) {
             wizardsBarack[i] = createWizard(typeName[2]);
@@ -251,7 +78,7 @@ public class Academy {
         return wizardsBarack;
     }
 
-    private Cleric createCleric(String typeName) {
+    public Cleric createCleric(String typeName) {
         int minHp = 60;
         int maxHp = 140;
         Cleric cleric = new Cleric(typeName, randomNumbers(minHp, maxHp),
@@ -259,10 +86,10 @@ public class Academy {
         return cleric;
     }
 
-    private Cleric[] createCleric() {
+    public Cleric[] createCleric() {
         System.out.println("Введите необходимое кол-во клериков в Академии");
 
-        clericsBarack = new Cleric[requestNumberOfSoldier()];
+        Cleric[] clericsBarack = new Cleric[requestNumberOfSoldier()];
 
         for (int i = 0; i < clericsBarack.length; i++) {
             clericsBarack[i] = createCleric(typeName[3]);

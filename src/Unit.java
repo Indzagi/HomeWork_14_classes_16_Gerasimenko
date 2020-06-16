@@ -1,25 +1,25 @@
 
 public abstract class Unit {
-    private int armor;
-    private int health;
     private String typeName;
+    private int health;
+    private int armor;
+
+
+    public Unit(String typeName, int health, int armor) {
+        this.typeName = typeName;
+        this.health = health;
+        this.armor = armor;
+    }
 
     public abstract void go();
 
     public abstract void stop();
 
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
     public int getHealth() {
         return health;
     }
 
-    public void setArmor(int armor) {
-        this.armor = armor;
-    }
 
     public int getArmor() {
         return armor;
@@ -27,10 +27,6 @@ public abstract class Unit {
 
     public String getTypeName() {
         return typeName;
-    }
-
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
     }
 
 

@@ -1,13 +1,10 @@
 
 public class Wizard extends MagicFighters {
 
-    public Wizard(String typeName, int health, int armor, int magicPower) {
-        this.setTypeName(typeName);
-        this.setHealth(health);
-        this.setArmor(armor);
-        this.setMagicPower(magicPower);
-    }
 
+    public Wizard(String typeName, int health, int armor, int magicPower) {
+        super(typeName, health, armor, magicPower);
+    }
 
     @Override
     public void go() {

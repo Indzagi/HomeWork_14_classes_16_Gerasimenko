@@ -1,13 +1,10 @@
 
 public class Cleric extends MagicFighters {
 
-    public Cleric(String typeName, int health, int armor, int magicPower) {
-        this.setTypeName(typeName);
-        this.setHealth(health);
-        this.setArmor(armor);
-        this.setMagicPower(magicPower);
-    }
 
+    public Cleric(String typeName, int health, int armor, int magicPower) {
+        super(typeName, health, armor, magicPower);
+    }
 
     public void casteTreatment() {
         System.out.println("Клерик кастует лечение на выбраную цель");
